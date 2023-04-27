@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    {# Include Bootstrap 4 and jQuery #}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    {# Django Tempus Dominus assets are included in `{{ form.media }}` #}
+    {{ form.media }}
+    <title>Página de Login</title>
+</head>
+<header>    
+{% include 'partials/_alertas.html' %}
+</header>
+
+<body>
+        <main class="principal">
+            <section class="menu-lateral">
+                <nav class="menu-lateral__navegacao">
+                    <img src="{% static '/assets/logo/Metalkraft_cor.jpg' %}" width="90" height="60"/>
+                    <a href="{% url 'login' %}">Login |</a>
+                    <a href="{% url 'cadastro' %}">Cadastrar</a>
+                </nav>
+            </section>
+            <br>
+            <section class="form-group" style="margin-left: 5em">
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %} <!--  garante a segurança -->
+                    <div class="col-12 col-lg-12" style="margin-bottom: 10px;">
+                        {% for field in form.visible_fields %}
+                            <div class="col-12 col-lg-12">
+                                <label for="{{ field.id_for_label }}" style="color:#D9D9D9; margin-bottom: 5px;">{{field.label}}</label>
+                                {{field}}
+                               
+                            </div><br>
+                        {% endfor %}
+                             <div class="col-12 col-lg-12" style="margin-bottom: 10px;">
+                                <button type="submit" class="btn btn-success col-5" style="padding: top 10px;">Logar</button>
+                            </div>
+                    </div>
+                </form>
+            </section> 
+        </main>
+    </div>
+</body>
+

@@ -1,0 +1,12 @@
+{% extends "formulario/base.html" %}
+{% block content %}
+
+<h1>Seu acompanhamento</h1>
+    <p>N.P.: {{ form.NUM_PANELA.value }}</p>
+    <p>FORNO: {{ form.FORNO_FUSAO.value }}</p>
+    <p>Data registro: {{ form.HORA.value }}</p>
+    <p>Composição Química: {{ form.COMP_QUIMICA.value }}</p>
+    <p>Liga(AL): {{ form.LIGA.value }}</p>
+
+{% endblock %}
+

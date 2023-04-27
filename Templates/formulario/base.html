@@ -1,0 +1,44 @@
+{% load static %}
+<!-- {% if user.is_authenticated %}   garante que esse bloco seja mostrado somente para usuários autenticados - comentado pois funciona melhor no Form_Fornos/Views.py -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    {# Include Bootstrap 4 and jQuery #}
+
+    {# Django Tempus Dominus assets are included in `{{ form.media }}` #}
+    {{ form.media }}
+    <title>Seu acompanhamento</title>
+</head>
+<body>
+      <header> 
+          {% for message in messages %}
+            <div class="alert alert-primary">
+                <p id="messages">{{message}}</p>
+            </div>
+          {% endfor %}
+      </header>
+    <section class="container mt-2" >
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+            <div class="container-fluid" style="background-color: #d8ddef;">
+              <a class="navbar-brand" href="{% url 'index' %}">INÍCIO</a>
+              <div >
+                <div class="navbar-nav">
+                  <a class="nav-link" href="{% url 'logout' %}">DESLOGAR</a>
+                </div>
+              </div>
+            </div>
+          </nav>
+    
+
+        {% block content %}{% endblock %}
+
+    </section>
+</body>
+</html>
+<!-- {% endif %}-->

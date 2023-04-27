@@ -1,6 +1,7 @@
-{% extends "base.html" %}
+{% extends "formulario/base.html" %}
 {% block content %}
 {% load widget_tweaks %}
+
 
 
 <h2>ACOMPANHAMENTO DE ABASTECIMENTO DE FORNO DE ESPERA</h2>
@@ -12,11 +13,11 @@
         <label for="{{field.id_for_label}}">{{field.label}}</label>
         {{field|add_class:'form-control'}}
     </div>
-    {% for error in field.errors %}
+   {% for error in field.errors %}
     <section class="alert alert-danger" role="alert>
         {{field.errors}}
     </section>
-    {% endfor %}
+    {% endfor %} 
     {% endfor %}
 
     <input type="submit" value="Enviar" class="btn btn-success">

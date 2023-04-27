@@ -3,14 +3,26 @@ from tempus_dominus.widgets import TimePicker
 from datetime import datetime
 from Form_Fornos.choices import *
 from Form_Fornos.validation import *
+#teste
 
+
+#acaba teste
+#cria os campos na página
 class Form_FornosFormulario(forms.Form):
     NUM_PANELA = forms.IntegerField(label='NP (Número da panela)')
-    FORNO_FUSAO = forms.CharField(label='Forno Fusão', max_length=50)
-    hora = forms.TimeField(label='Hora', widget=TimePicker())
-    data_registro = forms.DateField(label='Data do acompanhamento', disabled=True, initial=datetime.today)
-    compos_quimica = forms.ChoiceField(label='Composição Química', choices=tipos_comp_quimica)
-    liga = forms.ChoiceField(label='Liga(AL)', choices=tipos_de_liga)
+    HORA = forms.DateTimeField(label='Hora',widget=forms.DateTimeInput(attrs={'readonly': 'readonly'}), initial=datetime.today)
+    FORNO_FUSAO = forms.ChoiceField(label='Forno fusão', choices=tipos_forno, initial=1)
+    #HORA = forms.TimeField(label='Hora', widget=TimePicker())    
+    COMP_QUIMICA = forms.ChoiceField(label='Composição Química', choices=tipos_comp_quimica)
+    TEMP_VAZ_ESPECIFICADO = forms.IntegerField(label='Temperatura vazamento especificado:')
+    LIGA = forms.ChoiceField(label='Liga(AL)', choices=tipos_de_liga)
+    #USUARIO = forms.CharField(label='Operador', disabled=True, initial=User.username)
+    REL_MAQUINAS = forms.ChoiceField(label='Relação Máquinas', choices=relacao_das_maquinas)
+    DENSIDADE_ESP = forms.IntegerField(label='Densidade Especificado: (conf. plano de controle)')
+    TEMPERATURA = forms.IntegerField(label='Temp. | Após FDU | Min. 650ºC')
+    FORNO_TORRE = forms.ChoiceField(label='Forno Torre', choices=tipos_forno, initial=1)
+    N_P_TORRE = forms.IntegerField(label='NP (Número da panela)')
+    MKR = forms.CharField(label='MKR')
 
 
     

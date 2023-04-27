@@ -16,7 +16,9 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['10.19.109.100', '127.0.0.1', '10.19.109.202']
+
+
 
 
 # Application definition
@@ -31,6 +33,7 @@ INSTALLED_APPS = [
     "Form_Fornos",
     "tempus_dominus",
     'widget_tweaks',
+    'usuarios',
 ]
 
 MIDDLEWARE = [
@@ -112,9 +115,28 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'setup/static')
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 TEMPUS_DOMINUS_LOCALIZE = True
+
+
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# messages
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+    messages.SUCCESS: 'success'
+}
