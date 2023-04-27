@@ -22,10 +22,10 @@ def index(request):
 def saverecords(request):
     conn = pyodbc.connect(
         "Driver={Sql Server};"
-        "Server=mks42;"
-        "DataBase=Hmlg;"
-        "uid=SA;"
-        "pwd=ec8pcprec8pcpr"
+        "Server=**********;"
+        "DataBase=*******;"
+        "uid=******;"
+        "pwd=**********"
     )
     if request.method == 'POST':
         form = Form_FornosFormulario(request.POST)
